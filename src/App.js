@@ -1,32 +1,23 @@
-import { useState } from 'react'
-import { Calendar } from './components/Calendar'
-import { monthNames, weekDayNames } from './constants'
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import DashboardPage from './components/Dashboard';
+import ChecklistPage from './components/Checklist';
+import FormPage from './components/ChecklistForm';
+import './App.css'
 
-import './styles/App.css'
-
-function App() {
-  const [date, setDate] = useState(new Date())
-  console.log('Date:', date); // Ajoutez cette ligne
-  const [notes, setNotes] = useState({}); // État pour stocker les notes
-
-  const weekDay = weekDayNames[date.getDay()]
-  const monthName = monthNames[date.getMonth()]
-
+const App = () => {
   return (
-    <div className="App">
-      <div className="calendar-left">
-        <h1 className="calendarLeft-day">{date.getDate()}</h1>
-        <p className="calendarLeft-date">
-          {weekDay} <Separator /> {monthName} <Separator /> {date.getFullYear()}
-        </p>
+    <Router>
+      <div>
+        <h1>Checklist App</h1>
+        <Routes>
+          <Route exact path="/" element={<DashboardPage/>} />
+          <Route path="/checklist/:id" element={<ChecklistPage/>} />
+          <Route path="/add-checklist" element={<FormPage/>} />
+        </Routes>
       </div>
-      <Calendar date={date} setDate={setDate} notes={notes} setNotes={setNotes} />
-    </div>
-  )
-}
+    </Router>
+  );
+};
 
-const Separator = () => {
-  return <span className="separator">&#183;</span>
-}
-
-export default App
+export default App;
