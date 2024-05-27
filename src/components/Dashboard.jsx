@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 const DashboardPage = () => {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [loadingDelete, setLoadingDelete] = useState(false);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
@@ -32,11 +33,14 @@ const DashboardPage = () => {
     const confirmDelete = window.confirm('Are you sure you want to delete this checklist?');
 
     if (confirmDelete) {
+      setLoadingDelete(true);
       try {
         await deleteChecklist(id);
         setTasks(tasks.filter(task => task.id !== id));
       } catch (error) {
         console.error('Error deleting checklist:', error);
+      } finally {
+        setLoadingDelete(false);
       }
     }
   };
@@ -70,8 +74,19 @@ const DashboardPage = () => {
     }
   };
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return
+      <div className="spinner">
+      <span>L</span>
+      <span>O</span>
+      <span>A</span>
+      <span>D</span>
+      <span>I</span>
+      <span>N</span>
+      <span>G</span>
+      </div>
+        ;
   if (error) return <div>{error}</div>;
+
 
   return (
     <div className="dashboard">

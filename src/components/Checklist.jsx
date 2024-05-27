@@ -98,6 +98,15 @@ const deleteEditedTask = (index) => {
   const updatedTasks = [...editedTasks];
   updatedTasks.splice(index, 1);
   setEditedTasks(updatedTasks);
+  };
+  
+  const statusText = (status) => {
+    switch (status) {
+        case 0: return "Not Done";
+        case 1: return "In Progress";
+        case 2: return "Done";
+        default: return "Unknown";
+    }
 };
 
   return (
@@ -153,32 +162,31 @@ const deleteEditedTask = (index) => {
 </div>
 
       ) : (
-        <div className="card">
-      <h2 className="card-title">{checklist.title}</h2>
-      <p className="card-description">{checklist.description}</p>
-      {/* <p className="card-id">ID: {checklist.id}</p> */}
-      <p className="card-status">Status: {checklist.statut}</p>
-      <p className="card-created-at">Created At: {checklist.created_at}</p>
-      <ul className="card-todo-list">
-        {checklist.todo.map((item, index) => (
-          <li key={index} className="card-todo-item">
-            <p className="todo-title" onClick={() => toggleTask(index)}>
-              <FontAwesomeIcon icon={openTasks[index] ? faChevronDown : faChevronRight} /> {item.title}
-            </p>
-            {openTasks[index] && (
-              <div>
-                <p className="todo-description">Description: {item.description}</p>
-                <p className="todo-status">Status: {item.status}</p>
-              </div>
-            )}
-          </li>
-        ))}
-      </ul>
-      <div className='card-buttons'>
-        <button onClick={() => setIsEditing(true)} className="card-edit-button">Edit</button>
-        <button onClick={handleDelete} className="card-delete-button">Delete</button>
-      </div>
-    </div>
+     <div className="card">
+            <h2 className="card-title">title: {checklist.title}</h2>
+            <p className="card-description">Description: {checklist.description}</p>
+            <p className="card-status">Statut: {statusText(checklist.statut)}</p>
+            <p className="card-created-at">Created At: {checklist.created_at}</p>
+            <ul className="card-todo-list">
+                {checklist.todo.map((item, index) => (
+                    <li key={index} className="card-todo-item">
+                        <p className="todo-title" onClick={() => toggleTask(index)}>
+                            <FontAwesomeIcon icon={openTasks[index] ? faChevronDown : faChevronRight} /> title: {item.title}
+                        </p>
+                        {openTasks[index] && (
+                            <div>
+                                <p className="todo-description">Description: {item.description}</p>
+                                <p className="todo-status">Status: {statusText(item.status)}</p>
+                            </div>
+                        )}
+                    </li>
+                ))}
+            </ul>
+            <div className='card-buttons'>
+                <button onClick={() => setIsEditing(true)} className="card-edit-button">Edit</button>
+                <button onClick={handleDelete} className="card-delete-button">Delete</button>
+            </div>
+        </div>
       )}
     </div>
   );

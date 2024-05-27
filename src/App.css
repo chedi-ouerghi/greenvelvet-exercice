@@ -78,7 +78,7 @@ button:hover {
 
 
 .navbar {
-    background: var(--primary-color);
+  background: var(--primary-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -89,10 +89,10 @@ button:hover {
 }
 
 nav {
-    display: flex;
-    align-items: center;
-    width: 98%;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  width: 98%;
+  justify-content: space-between;
 }
 
 .navbar-brand {
@@ -127,6 +127,7 @@ nav {
   font-size: 1em;
   margin-left: 1em;
 }
+
 
 .login-button:hover {
   background-color: white;
@@ -508,4 +509,60 @@ h2 {
 .edit-save-button:hover,
 .edit-cancel-button:hover {
   background-color: #45a049;
+}
+
+
+
+/* loading  */
+
+.spinner {
+ height: 50px;
+ width: max-content;
+ font-size: 18px;
+ font-weight: 600;
+ font-family: monospace;
+ letter-spacing: 1em;
+ color: #2015ac;
+ filter: drop-shadow(0 0 10px);
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+
+.spinner span {
+ animation: loading6454 1.75s ease infinite;
+}
+
+.spinner span:nth-child(2) {
+ animation-delay: 0.25s;
+}
+
+.spinner span:nth-child(3) {
+ animation-delay: 0.5s;
+}
+
+.spinner span:nth-child(4) {
+ animation-delay: 0.75s;
+}
+
+.spinner span:nth-child(5) {
+ animation-delay: 1s;
+}
+
+.spinner span:nth-child(6) {
+ animation-delay: 1.25s;
+}
+
+.spinner span:nth-child(7) {
+ animation-delay: 1.5s;
+}
+
+@keyframes loading6454 {
+ 0%, 100% {
+  transform: translateY(0);
+ }
+
+ 50% {
+  transform: translateY(-10px);
+ }
 }
