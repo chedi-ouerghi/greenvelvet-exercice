@@ -57,9 +57,6 @@ const DashboardPage = () => {
     }
   };
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
-
   const getStatusColor = (status) => {
     switch (status) {
       case 0:
@@ -73,43 +70,48 @@ const DashboardPage = () => {
     }
   };
 
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>{error}</div>;
+
   return (
-    <div>
-      <h2>All Checklists</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Status</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {tasks.map(checklist => (
-            <tr key={checklist.id}>
-              <td>
-                {checklist.title}
-              </td>
-              <td>
-                <select
-                  value={checklist.statut} 
-                  onChange={(e) => handleStatusChange(checklist.id, parseInt(e.target.value))}
-                  style={{ color: getStatusColor(checklist.statut) }} 
-                >
-                  <option value={0}>Not Done</option>
-                  <option value={1}>In Progress</option>
-                  <option value={2}>Done</option>
-                </select>
-              </td>
-              <td>
-                <button onClick={() => navigate(`/checklist/${checklist.id}`)}>View</button>
-                <button onClick={() => handleDelete(checklist.id)}>Delete</button>
-              </td>
+    <div className="dashboard">
+      <Link to="/add-checklist" className="add-checklist-button">Add New Checklist</Link>
+      {tasks.length === 0 ? (
+        <div className="no-data">No Data</div>
+      ) : (
+        <table className="checklist-table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Status</th>
+              <th style={{width:'130px'}}>Action</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-      <Link to="/add-checklist">Add New Checklist</Link>
+          </thead>
+          <tbody>
+            {tasks.map(checklist => (
+              <tr key={checklist.id}>
+                <td>{checklist.title}</td>
+                <td>
+                  <select
+                    value={checklist.statut}
+                    onChange={(e) => handleStatusChange(checklist.id, parseInt(e.target.value))}
+                    className="status-select"
+                    style={{ color: getStatusColor(checklist.statut) }}
+                  >
+                    <option value={0}>Not Done</option>
+                    <option value={1}>In Progress</option>
+                    <option value={2}>Done</option>
+                  </select>
+                </td>
+                <td style={{width:'130px'}}>
+                  <button onClick={() => navigate(`/checklist/${checklist.id}`)} className="view-button">View</button>
+                  <button onClick={() => handleDelete(checklist.id)} className="delete-button">Delete</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
     </div>
   );
 };

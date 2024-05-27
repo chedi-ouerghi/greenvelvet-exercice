@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { getChecklist, updateChecklist, deleteChecklist } from '../api';
 import { useParams, useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronDown, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+
 
 const ChecklistPage = () => {
   const { id } = useParams();
@@ -12,6 +15,9 @@ const ChecklistPage = () => {
   const [editedTitle, setEditedTitle] = useState('');
   const [editedDescription, setEditedDescription] = useState('');
   const [editedTasks, setEditedTasks] = useState([]);
+    const [openTasks, setOpenTasks] = useState({});
+  const [tasks, setTasks] = useState([]);
+
 
   useEffect(() => {
     const fetchChecklist = async () => {
@@ -79,64 +85,100 @@ const handleEdit = async () => {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
 
+
+
+  const toggleTask = (index) => {
+    setOpenTasks({
+      ...openTasks,
+      [index]: !openTasks[index]
+    });
+  };
+
+const deleteEditedTask = (index) => {
+  const updatedTasks = [...editedTasks];
+  updatedTasks.splice(index, 1);
+  setEditedTasks(updatedTasks);
+};
+
   return (
-    <div>
+    <div className="checklist-container">
       {isEditing ? (
-        <div>
-          <input
-            type="text"
-            value={editedTitle}
-            onChange={(e) => setEditedTitle(e.target.value)}
-          />
-          <textarea
-            value={editedDescription}
-            onChange={(e) => setEditedDescription(e.target.value)}
-          />
-          {editedTasks.map((task, index) => (
-            <div key={index}>
-              <input
-                type="text"
-                value={task.title}
-                onChange={(e) => handleTaskChange(index, 'title', e.target.value)}
-              />
-              <textarea
-                value={task.description}
-                onChange={(e) => handleTaskChange(index, 'description', e.target.value)}
-              />
-              <select
-                value={task.status}
-                onChange={(e) => handleTaskChange(index, 'status', parseInt(e.target.value))}
-              >
-                <option value={0}>Not Done</option>
-                <option value={1}>In Progress</option>
-                <option value={2}>Done</option>
-              </select>
-            </div>
-          ))}
-          <button onClick={handleEdit}>Save</button>
-          <button onClick={() => setIsEditing(false)}>Cancel</button>
-        </div>
+<div className="edit-form">
+  <input
+    type="text"
+    className="edit-input"
+    value={editedTitle}
+    onChange={(e) => setEditedTitle(e.target.value)}
+    placeholder="Title"
+  />
+  <textarea
+    className="edit-textarea"
+    value={editedDescription}
+    onChange={(e) => setEditedDescription(e.target.value)}
+    placeholder="Description"
+  />
+  {editedTasks.map((task, index) => (
+    <div key={index} className="task-edit-item">
+      <input
+        type="text"
+        className="edit-input"
+        value={task.title}
+        onChange={(e) => handleTaskChange(index, 'title', e.target.value)}
+        placeholder="Task Title"
+      />
+      <textarea
+        className="edit-textarea"
+        value={task.description}
+        onChange={(e) => handleTaskChange(index, 'description', e.target.value)}
+        placeholder="Task Description"
+      />
+      <select
+        className="edit-select"
+        value={task.status}
+        onChange={(e) => handleTaskChange(index, 'status', parseInt(e.target.value))}
+      >
+        <option value={0}>Not Done</option>
+        <option value={1}>In Progress</option>
+        <option value={2}>Done</option>
+      </select>
+      <button onClick={() => deleteEditedTask(index)} className="edit-delete-task-button">
+        Delete Task
+      </button>
+    </div>
+  ))}
+  <div className="edit-buttons">
+    <button onClick={handleEdit} className="edit-save-button">Save</button>
+    <button onClick={() => setIsEditing(false)} className="edit-cancel-button">Cancel</button>
+  </div>
+</div>
+
       ) : (
         <div className="card">
-      <h2>{checklist.title}</h2>
-      <p>{checklist.description}</p>
-      <p>ID: {checklist.id}</p>
-      <p>Status: {checklist.statut}</p>
-      <p>Created At: {checklist.created_at}</p>
-      <ul>
+      <h2 className="card-title">{checklist.title}</h2>
+      <p className="card-description">{checklist.description}</p>
+      {/* <p className="card-id">ID: {checklist.id}</p> */}
+      <p className="card-status">Status: {checklist.statut}</p>
+      <p className="card-created-at">Created At: {checklist.created_at}</p>
+      <ul className="card-todo-list">
         {checklist.todo.map((item, index) => (
-          <li key={index}>
-            <p>Title: {item.title}</p>
-            <p>Description: {item.description}</p>
-            <p>Status: {item.status}</p>
+          <li key={index} className="card-todo-item">
+            <p className="todo-title" onClick={() => toggleTask(index)}>
+              <FontAwesomeIcon icon={openTasks[index] ? faChevronDown : faChevronRight} /> {item.title}
+            </p>
+            {openTasks[index] && (
+              <div>
+                <p className="todo-description">Description: {item.description}</p>
+                <p className="todo-status">Status: {item.status}</p>
+              </div>
+            )}
           </li>
         ))}
-            </ul>
-            <div className='footer-button'>
-      <button onClick={() => setIsEditing(true)}>Edit</button>
-      <button onClick={handleDelete}>Delete</button>
-            </div>
-            </div>
+      </ul>
+      <div className='card-buttons'>
+        <button onClick={() => setIsEditing(true)} className="card-edit-button">Edit</button>
+        <button onClick={handleDelete} className="card-delete-button">Delete</button>
+      </div>
+    </div>
       )}
     </div>
   );

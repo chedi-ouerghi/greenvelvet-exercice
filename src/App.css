@@ -1,290 +1,511 @@
-/* Typography */
+:root {
+  --primary-color: #26547C;
+  --secondary-color: #EF476F;
+  --accent-color: #FFD166;
+}
+
 body {
-  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--primary-color);
+  color: white;
+  box-sizing: border-box;
 }
 
-/* Colors */
-.primary-color {
-  color: #26547C; /* Bleu */
-}
+.App {
+    width: 100%;
+    height: 100vh;
+    background: #fff;
+    overflow: hidden;
+  }
 
-.secondary-color {
-  color: #EF476F; /* Rose */
-}
-
-.tertiary-color {
-  color: #FFD166; /* Jaune */
-}
-
-/* Header */
 h1 {
-  margin-bottom: 20px;
-  color: #26547C;
+  color: var(--accent-color);
 }
 
-/* Link */
-a {
-  color: #26547C;
+header, footer {
+  background-color: var(--secondary-color);
+  padding: 1em;
+}
+
+nav a {
+  color: white;
+  margin: 0 1em;
   text-decoration: none;
 }
 
-a:hover {
+nav a:hover {
   text-decoration: underline;
 }
 
-/* Buttons */
+main {
+    padding: 2em;
+    background-color: white;
+    color: var(--primary-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 72%;
+    width: 96%;
+}
+
+.footer {
+    position: relative;
+    bottom: 0;
+    height: 7vh;
+    background: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 button {
-  padding: 8px 16px;
-  margin-right: 10px;
+  background-color: var(--accent-color);
   border: none;
-  border-radius: 4px;
+  color: var(--primary-color);
+  padding: 0.5em 1em;
+  margin: 0.5em;
   cursor: pointer;
-}
-
-/* Checklist items */
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-li {
-  margin-bottom: 10px;
-}
-
-/* Form */
-form {
-  margin-top: 20px;
-}
-
-label {
-  display: block;
-  margin-bottom: 5px;
-}
-
-input[type="text"],
-textarea {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
   border-radius: 4px;
-}
-
-select {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-/* Checklist page */
-.checklist-container {
-  margin-top: 20px;
-}
-
-.checklist-header {
-  margin-bottom: 20px;
-}
-
-.checklist-title {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
-.checklist-details {
-  margin-bottom: 10px;
-}
-
-.checklist-task {
-  margin-bottom: 20px;
-}
-
-.checklist-task-title {
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.checklist-task-description {
-  margin-bottom: 5px;
-}
-
-.checklist-task-status {
-  font-style: italic;
-}
-
-/* Edit mode */
-.edit-mode {
-  margin-bottom: 20px;
-}
-
-/* Footer */
-footer {
-  margin-top: 50px;
-  text-align: center;
-  color: #aaa;
-}
-
-
-/* Table */
-table {
-  width: 50%;
-  border-collapse: collapse;
-}
-
-/* Table Header */
-th {
-  background-color: #26547C; /* Bleu */
-  color: white;
-  font-weight: bold;
-  padding: 10px;
-  text-align: left;
-}
-
-/* Table Body */
-td {
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
-}
-
-/* Table Links */
-a {
-  color: #26547C; /* Bleu */
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-/* Table Buttons */
-button {
-  padding: 5px 10px;
-  background-color: #EF476F; /* Rose */
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
 }
 
 button:hover {
-  background-color: #FFD166; /* Jaune */
+  background-color: var(--secondary-color);
+  color: white;
 }
 
+
+/* navabr  */
+
+
+.navbar {
+    background: var(--primary-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  position: relative;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    width: 98%;
+    justify-content: space-between;
+}
+
+.navbar-brand {
+  font-size: 1.5em;
+  color: white;
+  font-weight: bold;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-links a {
+  color: white;
+  margin: 0 1em;
+  text-decoration: none;
+  font-size: 1em;
+}
+
+.navbar-links a:hover {
+  text-decoration: underline;
+}
+
+.login-button {
+  background-color: var(--accent-color);
+  border: none;
+  color: var(--primary-color);
+  padding: 0.5em 1em;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 1em;
+  margin-left: 1em;
+}
+
+.login-button:hover {
+  background-color: white;
+  color: var(--secondary-color);
+}
+
+
+/* dashboard  */
+
+:root {
+  --primary-color: #26547C;
+  --secondary-color: #EF476F;
+  --accent-color: #FFD166;
+  --background-color: #f4f4f9;
+}
+
+.dashboard {
+  padding: 2em;
+  background-color: var(--background-color);
+  color: var(--primary-color);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.no-data {
+  text-align: center;
+  color: var(--secondary-color);
+  font-size: 1.5em;
+  margin-top: 2em;
+}
+
+h2 {
+  color: var(--primary-color);
+  margin-bottom: 1em;
+}
+
+.add-checklist-button {
+  background-color: var(--accent-color);
+  border: none;
+  color: var(--primary-color);
+  padding: 0.5em 1em;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 1em;
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 1em;
+}
+
+.add-checklist-button:hover {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.checklist-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.checklist-table th, .checklist-table td {
+  border: 1px solid var(--primary-color);
+  padding: 0.5em;
+  text-align: left;
+}
+
+.checklist-table th {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.checklist-table tr:nth-child(even) {
+  background-color: #e9e9e9;
+}
+
+.status-select {
+  padding: 0.3em;
+  border: 1px solid var(--primary-color);
+  border-radius: 4px;
+}
+
+.view-button, .delete-button {
+  background-color: var(--accent-color);
+  border: none;
+  color: var(--primary-color);
+  padding: 0.3em 0.6em;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-right: 0.5em;
+}
+
+.view-button:hover, .delete-button:hover {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+
+
+/* checklist  */
+
+
+:root {
+  --primary-color: #26547C;
+  --secondary-color: #EF476F;
+  --accent-color: #FFD166;
+  --background-color: #f4f4f9;
+}
+
+.checklist-container {
+    padding: 2em;
+    background-color: var(--background-color);
+    color: var(--primary-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .card {
-  background-color: #fff;
-  border-radius: 4px;
+  padding: 1em;
+  background-color: white;
+  border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  margin-bottom: 20px;
-  width: 25%;
+  margin-bottom: 1em;
+  width: 40%;
+}
+
+.card-title {
+  color: var(--primary-color);
+  margin-bottom: 0.5em;
+}
+
+.card-description, .card-id, .card-status, .card-created-at {
+  margin-bottom: 0.5em;
+}
+
+.card-todo-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.card-todo-item {
+  padding: 0.5em;
+  background-color: #e9e9e9;
+  border-radius: 4px;
+  margin-bottom: 0.5em;
+}
+
+.todo-title, .todo-description, .todo-status {
+  margin: 0.2em 0;
+}
+
+.card-buttons {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  overflow: hidden;
-  transition: transform 0.3s ease-in-out;
+  justify-content: space-between;
+  margin-top: 1em;
 }
 
-.card:hover {
-  transform: translateY(-10px);
-}
-
-.card h2 {
-  margin-top: 0;
-}
-
-.card p {
-  margin-bottom: 10px;
-}
-
-.card ul {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.card li {
-  margin-bottom: 5px;
-}
-
-.card button {
-  padding: 8px 16px;
-  margin-right: 10px;
+.card-edit-button, .card-delete-button {
+  background-color: var(--accent-color);
   border: none;
-  border-radius: 4px;
+  color: var(--primary-color);
+  padding: 0.5em 1em;
   cursor: pointer;
+  border-radius: 4px;
 }
 
-.footer-button{
-  padding: 8px 16px;
-  margin-right: 10px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  background-color: #26547C; /* Bleu */
+.card-edit-button:hover, .card-delete-button:hover {
+  background-color: var(--secondary-color);
   color: white;
-  display: flex;
 }
+
+.edit-form {
+  padding: 1em;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.edit-input, .edit-textarea, .edit-select {
+  width: 100%;
+  padding: 0.5em;
+  margin-bottom: 0.5em;
+  border: 1px solid var(--primary-color);
+  border-radius: 4px;
+}
+
+.edit-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.edit-save-button, .edit-cancel-button {
+  background-color: var(--accent-color);
+  border: none;
+  color: var(--primary-color);
+  padding: 0.5em 1em;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.edit-save-button:hover, .edit-cancel-button:hover {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+
+
+/* form page add  */
+
+
+:root {
+  --primary-color: #26547C;
+  --secondary-color: #EF476F;
+  --accent-color: #FFD166;
+  --background-color: #f4f4f9;
+  --text-color: #333;
+  --input-border-color: #ccc;
+}
+
 
 .form-container {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f7f7f7;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+    margin: 0;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .form-container h2 {
-  margin-top: 0;
   margin-bottom: 20px;
+  color: var(--primary-color);
+}
+
+.form-container form > div {
+  margin-bottom: 15px;
+}
+
+.form{
+      overflow-y: auto;
+    height: 60vh;
+    width: 50%;
+    overflow-x: hidden;
 }
 
 .form-container label {
   display: block;
   margin-bottom: 5px;
+  color: var(--primary-color);
+  font-weight: bold;
 }
 
-.form-container input[type="text"],
-.form-container textarea {
+.input-field {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--input-border-color);
+  border-radius: 4px;
+  font-size: 1em;
+  color: var(--text-color);
+}
+
+.input-field:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+.add-task-btn,
+.submit-btn {
+  background-color: var(--accent-color);
+  border: none;
+  color: var(--primary-color);
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 1em;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+.add-task-btn:hover,
+.submit-btn:hover {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.task-container {
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid var(--input-border-color);
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+
+.task-container label {
+  margin-top: 10px;
+}
+
+.task-container input,
+.task-container textarea,
+.task-container select {
+  margin-top: 5px;
+}
+
+.task-container select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--input-border-color);
+  border-radius: 4px;
+  font-size: 1em;
+  color: var(--text-color);
+}
+
+.task-container select:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+
+/* edit form  */
+
+.edit-form {
+  margin-bottom: 20px;
+        overflow-y: auto;
+    height: 60vh;
+    width: 50%;
+    overflow-x: hidden;
+}
+
+.edit-input,
+.edit-textarea,
+.edit-select {
+  margin-bottom: 10px;
   width: 100%;
   padding: 8px;
-  margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  box-sizing: border-box;
 }
 
-.form-container button {
-  padding: 10px 20px;
-  background-color: #26547C;
-  color: #fff;
+.task-edit-item {
+  margin-bottom: 20px;
+}
+
+.edit-delete-task-button {
+  background-color: #f44336;
+  color: white;
   border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.edit-delete-task-button:hover {
+  background-color: #d32f2f;
+}
+
+.edit-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.edit-save-button,
+.edit-cancel-button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 8px 12px;
   border-radius: 4px;
   cursor: pointer;
 }
 
-.form-container button[type="submit"] {
-  margin-top: 20px;
-}
-
-.form-container button[type="submit"]:hover {
-  background-color: #1c3a56;
-}
-
-.form-container button[type="button"] {
-  background-color: #EF476F;
-}
-
-.form-container button[type="button"]:hover {
-  background-color: #d84366;
-}
-
-.form-container select {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+.edit-save-button:hover,
+.edit-cancel-button:hover {
+  background-color: #45a049;
 }
